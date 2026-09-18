@@ -3,10 +3,10 @@ name: Build Android APK
 on:
   workflow_dispatch:
     inputs:
-      flutter_channel:
-        description: Flutter channel or version to build with
+      flutter_version:
+        description: Flutter version to build with
         required: false
-        default: stable
+        default: 3.44.6
 
 permissions:
   contents: write
@@ -28,7 +28,8 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: ${{ inputs.flutter_channel }}
+          flutter-version: ${{ inputs.flutter_version }}
+          channel: stable
           cache: true
 
       - name: Show Flutter version
